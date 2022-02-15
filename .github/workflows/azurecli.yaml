@@ -1,0 +1,26 @@
+name: Aure-CLI
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'trigger.md'
+  workflow_dispatch:
+
+jobs:
+  Setup:
+    name: Setup OpenShift Installer Binary
+    runs-on: ubuntu-latest
+    steps:
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.30.0
+        inlineScript: |
+          az account show
+          az storage -h
