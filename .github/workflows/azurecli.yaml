@@ -28,4 +28,4 @@ jobs:
             az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
             az account show
             az --version
-            az vm list-usage -l southcentralus --query "[?contains(name.value, 'standardDSv3Family')]"
+            az feature register --namespace Microsoft.RedHatOpenShift --name preview
