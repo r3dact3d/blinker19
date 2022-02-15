@@ -14,11 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - name: Setup environment variables
-        run: |
-          source envs
-          echo $LOCATION
-          echo $RESOURCEGROUP
-          echo $CLUSTER
           
       - name: Azure login
         uses: azure/login@v1
@@ -37,6 +32,7 @@ jobs:
             echo $LOCATION
             echo $RESOURCEGROUP
             echo $CLUSTER
+            az vm list-usage -l $LOCATION --query "[?contains(name.value, 'standardDSv3Family')]" -o table
 #            az provider register -n Microsoft.RedHatOpenShift --wait
 #            az provider register -n Microsoft.Compute --wait
 #            az provider register -n Microsoft.Storage --wait
