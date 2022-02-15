@@ -9,7 +9,7 @@ on:
 
 jobs:
   Setup:
-    name: Setup OpenShift Installer Binary
+    name: Setup Ubuntu Runner
     runs-on: ubuntu-latest
     steps:
     - name: Azure Login
