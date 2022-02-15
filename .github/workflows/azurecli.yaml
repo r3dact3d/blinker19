@@ -24,4 +24,5 @@ jobs:
         with:
           azcliversion: 2.6.0
           inlineScript: |
+            az login
             az feature register --namespace Microsoft.RedHatOpenShift --name preview
