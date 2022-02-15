@@ -1,4 +1,4 @@
-name: Aure-CLI
+name: Setup ARO
 on:
   push:
     branches:
@@ -17,14 +17,13 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Azure CLI script
+    - name: Register Providers
       uses: azure/CLI@v1
       with:
         azcliversion: 2.6.0
         inlineScript: |
           az account show
           az --version
-          
           az provider register -n Microsoft.RedHatOpenShift --wait
           az provider register -n Microsoft.Compute --wait
           az provider register -n Microsoft.Storage --wait
