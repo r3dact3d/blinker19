@@ -24,9 +24,9 @@ jobs:
         with:
           azcliversion: 2.6.0
           inlineScript: |
+            source envs
             az account show
             az --version
-            source envs
             echo "Vars should be echoed below"
             echo $LOCATION
             echo $RESOURCEGROUP
