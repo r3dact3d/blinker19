@@ -24,12 +24,8 @@ jobs:
         with:
           azcliversion: 2.6.0
           inlineScript: |
-            
+            source envs
+            az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
             az account show
             az --version
-            az vm list-usage -l southcentralus --query "[?contains(name.value, 'standardDSv3Family')]" -o table
-#            az provider register -n Microsoft.RedHatOpenShift --wait
-#            az provider register -n Microsoft.Compute --wait
-#            az provider register -n Microsoft.Storage --wait
-#            az provider register -n Microsoft.Authorization --wait
-          
+            az vm list-usage -l southcentralus --query "[?contains(name.value, 'standardDSv3Family')]"
