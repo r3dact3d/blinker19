@@ -9,23 +9,34 @@ on:
 
 jobs:
   Setup:
-    name: Setup Ubuntu Runner
+    name: Setup Ubuntu runner
     runs-on: ubuntu-latest
     steps:
-    - name: Azure Login
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - uses: actions/checkout@main
+      - name: Setup environment variables
+        run: |
+          source envs
+          echo $LOCATION
+          echo $RESOURCEGROUP
+          echo $CLUSTER
+          
+      - name: Azure login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Register Providers
-      uses: azure/CLI@v1
-      with:
-        azcliversion: 2.6.0
-        inlineScript: |
-          az account show
-          az --version
-          az provider register -n Microsoft.RedHatOpenShift --wait
-          az provider register -n Microsoft.Compute --wait
-          az provider register -n Microsoft.Storage --wait
-          az provider register -n Microsoft.Authorization --wait
+      - name: Register providers
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.6.0
+          inlineScript: |
+            az account show
+            az --version
+            echo $LOCATION
+            echo $RESOURCEGROUP
+            echo $CLUSTER
+#            az provider register -n Microsoft.RedHatOpenShift --wait
+#            az provider register -n Microsoft.Compute --wait
+#            az provider register -n Microsoft.Storage --wait
+#            az provider register -n Microsoft.Authorization --wait
           
