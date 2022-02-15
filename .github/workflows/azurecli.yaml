@@ -24,8 +24,4 @@ jobs:
         with:
           azcliversion: 2.6.0
           inlineScript: |
-            source envs
-            az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
-            az account show
-            az --version
             az feature register --namespace Microsoft.RedHatOpenShift --name preview
