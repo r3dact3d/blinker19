@@ -24,14 +24,10 @@ jobs:
         with:
           azcliversion: 2.6.0
           inlineScript: |
-            source envs
+            
             az account show
             az --version
-            echo "Vars should be echoed below"
-            echo $LOCATION
-            echo $RESOURCEGROUP
-            echo $CLUSTER
-            az vm list-usage -l $LOCATION --query "[?contains(name.value, 'standardDSv3Family')]" -o table
+            az vm list-usage -l southcentralus --query "[?contains(name.value, 'standardDSv3Family')]" -o table
 #            az provider register -n Microsoft.RedHatOpenShift --wait
 #            az provider register -n Microsoft.Compute --wait
 #            az provider register -n Microsoft.Storage --wait
