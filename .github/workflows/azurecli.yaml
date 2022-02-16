@@ -22,8 +22,7 @@ jobs:
       - name: Register providers
         uses: azure/CLI@v1
         with:
-          azcliversion: 2.30.0
+          azcliversion: 2.33.1
           inlineScript: |
-            az feature register --namespace Microsoft.RedHatOpenShift --name preview --wait
-            az feature register --namespace Microsoft.RedHatOpenShift --wait
+            az account show
 
