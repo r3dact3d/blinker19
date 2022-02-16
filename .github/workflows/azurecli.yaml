@@ -24,12 +24,18 @@ jobs:
         with:
           azcliversion: 2.33.1
           inlineScript: |
-            az account show
+            az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
             source envs
+            az provider register -n Microsoft.RedHatOpenShift --name preview --wait
+            az provider register -n Microsoft.RedHatOpenShift --wait
+            az provider register -n Microsoft.Compute --wait
+            az provider register -n Microsoft.Storage --wait
+            az provider register -n Microsoft.Authorization --wait
+            az provider register -n Microsoft.Network --wait
             az group create --name $RESOURCEGROUP --location $LOCATION
             az network vnet create --resource-group $RESOURCEGROUP --name aro-vnet --address-prefixes 10.0.0.0/22
             az network vnet subnet create --resource-group $RESOURCEGROUP --vnet-name aro-vnet --name controlplane-subnet --address-prefixes 10.0.0.0/23 --service-endpoints Microsoft.ContainerRegistry
             az network vnet subnet create --resource-group $RESOURCEGROUP --vnet-name aro-vnet --name compute-subnet --address-prefixes 10.0.2.0/23 --service-endpoints Microsoft.ContainerRegistry
             az network vnet subnet update --name controlplane-subnet --resource-group $RESOURCEGROUP --vnet-name aro-vnet --disable-private-link-service-network-policies true
-            az aro create --resource-group $RESOURCEGROUP --name $CLUSTER --vnet aro-vnet --master-subnet controlplane-subnet --worker-subnet compute-subnet --pull-secret '${{ secrets.RED_HAT_PULLSECRET }}'
+            az aro create --resource-group $RESOURCEGROUP --name $CLUSTER --vnet aro-vnet --master-subnet controlplane-subnet --worker-subnet compute-subnet --client-id ${{ secrets.CLIENT_ID }} --client-secret ${{ secrets.CLIENT_SECRET }} --pull-secret '${{ secrets.RED_HAT_PULLSECRET }}'
             
