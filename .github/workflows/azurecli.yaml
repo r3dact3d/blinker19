@@ -26,7 +26,7 @@ jobs:
           inlineScript: |
             az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
             source envs
-            az provider register -n Microsoft.RedHatOpenShift --name preview --wait
+            az feature register --namespace Microsoft.RedHatOpenShift --name preview --wait
             az provider register -n Microsoft.RedHatOpenShift --wait
             az provider register -n Microsoft.Compute --wait
             az provider register -n Microsoft.Storage --wait
