@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@main
       - name: Setup Working Directory for OCP Install
         run: |
-          echo ${{ RED_HAT_PULLSECRET }} > $GITHUB_WORKSPACE/pull-secret.txt
+          echo ${{ secrets.RED_HAT_PULLSECRET }} > $GITHUB_WORKSPACE/pull-secret.txt
         
       - name: Register providers
         uses: azure/CLI@v1
