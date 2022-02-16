@@ -29,3 +29,6 @@ jobs:
           inlineScript: |
             az account show
             cat $GITHUB_WORKSPACE/pull-secret.txt
+            source envs
+            echo $LOCATION
+            
