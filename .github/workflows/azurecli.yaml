@@ -31,5 +31,5 @@ jobs:
             az network vnet subnet create --resource-group $RESOURCEGROUP --vnet-name aro-vnet --name controlplane-subnet --address-prefixes 10.0.0.0/23 --service-endpoints Microsoft.ContainerRegistry
             az network vnet subnet create --resource-group $RESOURCEGROUP --vnet-name aro-vnet --name compute-subnet --address-prefixes 10.0.2.0/23 --service-endpoints Microsoft.ContainerRegistry
             az network vnet subnet update --name controlplane-subnet --resource-group $RESOURCEGROUP --vnet-name aro-vnet --disable-private-link-service-network-policies true
-            az aro create --resource-group $RESOURCEGROUP --name $CLUSTER --vnet aro-vnet --master-subnet controlplane-subnet --worker-subnet compute-subnet --pull-secret ${{ secrets.RED_HAT_PULLSECRET }}
+            az aro create --resource-group $RESOURCEGROUP --name $CLUSTER --vnet aro-vnet --master-subnet controlplane-subnet --worker-subnet compute-subnet --pull-secret '${{ secrets.RED_HAT_PULLSECRET }}'
             
