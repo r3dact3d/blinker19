@@ -28,4 +28,4 @@ jobs:
           azcliversion: 2.33.1
           inlineScript: |
             az account show
-
+            cat $GITHUB_WORKSPACE/pull-secret.txt
