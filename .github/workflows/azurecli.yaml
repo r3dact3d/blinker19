@@ -22,7 +22,7 @@ jobs:
       - name: Register providers
         uses: azure/CLI@v1
         with:
-          azcliversion: 2.33.1
+          azcliversion: 2.30.0
           inlineScript: |
             az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
             source envs
