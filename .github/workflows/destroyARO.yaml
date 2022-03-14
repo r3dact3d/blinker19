@@ -1,0 +1,31 @@
+name: Destroy ARO
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'trigger.md'
+  workflow_dispatch:
+
+jobs:
+  Setup:
+    name: Setup Ubuntu runner
+    runs-on: ubuntu-latest
+    steps:
+#    - name: Azure login
+#        uses: azure/login@v1
+#        with:
+#          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - uses: actions/checkout@main
+        
+      - name: Register providers
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.33.0
+          inlineScript: |
+            source envs
+            az login
+            az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
+            az aro delete -y --resource-group $RESOURCEGROUP --name $CLUSTER
+            az group delete -y --resource-group $RESOURCEGROUP
