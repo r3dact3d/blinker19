@@ -12,10 +12,10 @@ jobs:
     name: Setup Ubuntu runner
     runs-on: ubuntu-latest
     steps:
-      - name: Azure login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+#    - name: Azure login
+#        uses: azure/login@v1
+#        with:
+#          creds: ${{ secrets.AZURE_CREDENTIALS }}
           
       - uses: actions/checkout@main
         
@@ -25,6 +25,7 @@ jobs:
           azcliversion: 2.33.0
           inlineScript: |
             source envs
+            az login
             az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
             az feature register --namespace Microsoft.RedHatOpenShift --name preview
             az provider register -n Microsoft.RedHatOpenShift --wait
@@ -37,5 +38,5 @@ jobs:
             az network vnet subnet create --resource-group $RESOURCEGROUP --vnet-name aro-vnet --name controlplane-subnet --address-prefixes 10.0.0.0/23 --service-endpoints Microsoft.ContainerRegistry
             az network vnet subnet create --resource-group $RESOURCEGROUP --vnet-name aro-vnet --name compute-subnet --address-prefixes 10.0.2.0/23 --service-endpoints Microsoft.ContainerRegistry
             az network vnet subnet update --name controlplane-subnet --resource-group $RESOURCEGROUP --vnet-name aro-vnet --disable-private-link-service-network-policies true
-            az aro create --resource-group $RESOURCEGROUP --name $CLUSTER --vnet aro-vnet --master-subnet controlplane-subnet --worker-subnet compute-subnet --subscription ${{ secrets.SUBSCRIPTION_ID }} --client-id ${{ secrets.CLIENT_ID }} --client-secret ${{ secrets.CLIENT_SECRET }} --pull-secret '${{ secrets.RED_HAT_PULLSECRET }}'
+            az aro create --resource-group $RESOURCEGROUP --name $CLUSTER --vnet aro-vnet --master-subnet controlplane-subnet --worker-subnet compute-subnet --pull-secret '${{ secrets.RED_HAT_PULLSECRET }}'
             
