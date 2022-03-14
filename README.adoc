@@ -1,3 +1,10 @@
 # blinker19
 
 * Add Azure subscription ID to GitHub Secrets 
+
+image::https://github.com/r3dact3d/blinker19/actions/workflows/azurecli.yaml/badge.svg[link="https://github.com/r3dact3d/blinker19/actions/workflows/azurecli.yaml"]
+
+image::https://github.com/r3dact3d/blinker19/actions/workflows/destroyARO.yaml/badge.svg[link="https://github.com/r3dact3d/blinker19/actions/workflows/destroyARO.yaml"]
+
+
+
