@@ -1,0 +1,3 @@
+# blinker19
+
+* Add Azure subscription ID to GitHub Secrets 
