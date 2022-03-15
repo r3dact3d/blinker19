@@ -40,11 +40,11 @@ jobs:
             az provider register -n Microsoft.Authorization --wait
             az provider register -n Microsoft.Network --wait
             az group create --name $RESOURCEGROUP --location $LOCATION
-            az network vnet create --resource-group $RESOURCEGROUP --name aro-vnet --address-prefixes 10.0.0.0/22
-            az network vnet subnet create --resource-group $RESOURCEGROUP --vnet-name aro-vnet --name controlplane-subnet --address-prefixes 10.0.0.0/23 --service-endpoints Microsoft.ContainerRegistry
-            az network vnet subnet create --resource-group $RESOURCEGROUP --vnet-name aro-vnet --name compute-subnet --address-prefixes 10.0.2.0/23 --service-endpoints Microsoft.ContainerRegistry
-            az network vnet subnet update --name controlplane-subnet --resource-group $RESOURCEGROUP --vnet-name aro-vnet --disable-private-link-service-network-policies true
-            az aro create --resource-group $RESOURCEGROUP --name $CLUSTER --vnet aro-vnet --master-subnet controlplane-subnet --worker-subnet compute-subnet --pull-secret '${{ secrets.RED_HAT_PULLSECRET }}'
+            az network vnet create -g $RESOURCEGROUP --name aro-vnet --address-prefixes 10.0.0.0/22
+            az network vnet subnet create -g $RESOURCEGROUP --vnet-name aro-vnet --name controlplane-subnet --address-prefixes 10.0.0.0/23 --service-endpoints Microsoft.ContainerRegistry
+            az network vnet subnet create -g $RESOURCEGROUP --vnet-name aro-vnet --name compute-subnet --address-prefixes 10.0.2.0/23 --service-endpoints Microsoft.ContainerRegistry
+            az network vnet subnet update --name controlplane-subnet -g $RESOURCEGROUP --vnet-name aro-vnet --disable-private-link-service-network-policies true
+            az aro create -g $RESOURCEGROUP -l $LOCATION -n $CLUSTER --vnet aro-vnet --master-subnet controlplane-subnet --worker-subnet compute-subnet --pull-secret '${{ secrets.RED_HAT_PULLSECRET }}' --verbose
             
       - name: Create GitOps 
         run: |
