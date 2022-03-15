@@ -18,8 +18,7 @@ NOTE: *fork* or *clone* repo so that you can use Your own GitHub Secrets and wor
 
 image::https://github.com/r3dact3d/blinker19/actions/workflows/deployARO.yaml/badge.svg[link="https://github.com/r3dact3d/blinker19/actions/workflows/deployARO.yaml"]
 
-NOTE: You can now check the Actions to watch/check the status of the deployment.  
-
+WARNING: During the Provisioning process you will be prompted to open the page https://microsoft.com/devicelogin and enter the code provided in workflow to authenticate.
 
 image::https://github.com/r3dact3d/blinker19/actions/workflows/destroyARO.yaml/badge.svg[link="https://github.com/r3dact3d/blinker19/actions/workflows/destroyARO.yaml"]
 
