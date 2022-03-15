@@ -16,7 +16,7 @@ NOTE: *fork* or *clone* repo so that you can use Your own GitHub Secrets and wor
 . Add Azure subscription ID to GitHub Secrets as SUBSCRIPTION_ID
 . Add Red Hat Pull Secret to GitHub Secrets as RED_HAT_PULLSECRET
 
-image::https://github.com/r3dact3d/blinker19/actions/workflows/DeployARO.yaml/badge.svg[link="https://github.com/r3dact3d/blinker19/actions/workflows/DeployARO.yaml"]
+image::https://github.com/r3dact3d/blinker19/actions/workflows/deployARO.yaml/badge.svg[link="https://github.com/r3dact3d/blinker19/actions/workflows/deployARO.yaml"]
 
 NOTE: You can now check the Actions to watch/check the status of the deployment.  
 
