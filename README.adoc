@@ -12,7 +12,7 @@ NOTE: *fork* or *clone* repo so that you can use Your own GitHub Secrets and wor
 
 === To deploy ARO
 
-. Update correct values in envs[link="https://github.com/r3dact3d/blinker19/blob/main/envs"] file
+. Update correct values in link:envs[envs] file
 . Add Azure subscription ID to GitHub Secrets 
 
 image::https://github.com/r3dact3d/blinker19/actions/workflows/azurecli.yaml/badge.svg[link="https://github.com/r3dact3d/blinker19/actions/workflows/azurecli.yaml"]
