@@ -13,9 +13,12 @@ NOTE: *fork* or *clone* repo so that you can use Your own GitHub Secrets and wor
 === To deploy ARO
 
 . Update correct values in link:envs[envs] file
-. Add Azure subscription ID to GitHub Secrets 
+. Add Azure subscription ID to GitHub Secrets as SUBSCRIPTION_ID
+. Add Red Hat Pull Secret to GitHub Secrets as RED_HAT_PULLSECRET
 
 image::https://github.com/r3dact3d/blinker19/actions/workflows/azurecli.yaml/badge.svg[link="https://github.com/r3dact3d/blinker19/actions/workflows/azurecli.yaml"]
+NOTE: You can now check the Actions to watch/check the status of the deployment.  
+
 
 image::https://github.com/r3dact3d/blinker19/actions/workflows/destroyARO.yaml/badge.svg[link="https://github.com/r3dact3d/blinker19/actions/workflows/destroyARO.yaml"]
 
