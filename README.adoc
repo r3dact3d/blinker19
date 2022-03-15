@@ -1,6 +1,19 @@
-# blinker19
+= Repo for deploying Azure Red Hat OpenShift (ARO)
 
-* Add Azure subscription ID to GitHub Secrets 
+NOTE: *fork* or *clone* repo so that you can use Your own GitHub Secrets and worklflow.
+
+== Content
+
+* <<Workflow, Workflow>>
+* <<Important, Important>>
+* <<TODO, TODO>>
+
+== Workflow
+
+=== To deploy ARO
+
+. Update correct values in envs[link="https://github.com/r3dact3d/blinker19/blob/main/envs"] file
+. Add Azure subscription ID to GitHub Secrets 
 
 image::https://github.com/r3dact3d/blinker19/actions/workflows/azurecli.yaml/badge.svg[link="https://github.com/r3dact3d/blinker19/actions/workflows/azurecli.yaml"]
 
