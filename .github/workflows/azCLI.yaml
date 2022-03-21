@@ -24,6 +24,6 @@ jobs:
           inlineScript: |
             #az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
             wget -O $GITHUB_WORKSPACE/az-aroext-latest.whl "https://aka.ms/az-aroext-latest.whl"
-            az extension add -s $GITHUB_WORKSPACE/az-aroext-latest.whl
+            az extension add -s $GITHUB_WORKSPACE/az-aroext-latest.whl --system
             az extension list
             az aro create cluster --help
