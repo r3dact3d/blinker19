@@ -17,12 +17,12 @@ jobs:
 #        with:
 #          creds: ${{ secrets.AZURE_CREDENTIALS }}
                             
-      - name: Provision
+      - name: Spin up CLI container
         uses: azure/CLI@v1
         with:
           azcliversion: latest
           inlineScript: |
-            source envs
             az login
             az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
             az extension list-available --output table
+            az aro create cluster --help
