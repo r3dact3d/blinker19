@@ -23,6 +23,7 @@ jobs:
           azcliversion: latest
           inlineScript: |
             az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
-            az extension add --upgrade -s "https://aka.ms/az-aroext-latest.whl"
+            wget "https://aka.ms/az-aroext-latest.whl"
+            ls *
             az extension list
             az aro create cluster --help
