@@ -14,9 +14,7 @@ jobs:
     steps:
     - name: Manual stuffs
       run: |
-        az version
-        curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-        az extension list
+        az aro create cluster --help
           
 #    - name: Azure login
 #        uses: azure/login@v1
