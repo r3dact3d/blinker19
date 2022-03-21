@@ -12,18 +12,22 @@ jobs:
     name: Setup Ubuntu runner
     runs-on: ubuntu-18.04
     steps:
+    - name: Manual stuffs
+      run: |
+        curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+          
 #    - name: Azure login
 #        uses: azure/login@v1
 #        with:
 #          creds: ${{ secrets.AZURE_CREDENTIALS }}
                             
-      - name: Spin up CLI container
-        uses: azure/CLI@v1
-        with:
-          azcliversion: latest
-          inlineScript: |
-            #az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
-            wget -O $GITHUB_WORKSPACE/az-aroext-latest.whl "https://aka.ms/az-aroext-latest.whl"
-            az extension add -s $GITHUB_WORKSPACE/az-aroext-latest.whl --system
-            az extension list
-            az aro create cluster --help
+    - name: Spin up CLI container
+      uses: azure/CLI@v1
+      with:
+        azcliversion: latest
+        inlineScript: |
+          #az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
+          wget -O $GITHUB_WORKSPACE/az-aroext-latest.whl "https://aka.ms/az-aroext-latest.whl"
+          az extension add -s $GITHUB_WORKSPACE/az-aroext-latest.whl --system
+          az extension list
+          az aro create cluster --help
