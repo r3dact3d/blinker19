@@ -55,7 +55,7 @@ jobs:
           sleep 120
           oc project openshift-gitops
           oc adm policy add-cluster-role-to-user cluster-admin -z openshift-gitops-argocd-application-controller
-          oc apply -f https://raw.githubusercontent.com/r3dact3d/gitops/main/blinky/cluster.yaml
+          oc apply -f https://raw.githubusercontent.com/r3dact3d/gitops/main/blinker19/gitops-appsets.yaml
           
 
             
