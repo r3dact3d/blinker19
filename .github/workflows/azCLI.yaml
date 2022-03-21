@@ -1,0 +1,28 @@
+name: Azure CLI
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'trigger.md'
+  workflow_dispatch:
+
+jobs:
+  Setup:
+    name: Setup Ubuntu runner
+    runs-on: ubuntu-latest
+    steps:
+#    - name: Azure login
+#        uses: azure/login@v1
+#        with:
+#          creds: ${{ secrets.AZURE_CREDENTIALS }}
+                            
+      - name: Provision
+        uses: azure/CLI@v1
+        with:
+          azcliversion: latest
+          inlineScript: |
+            source envs
+            az login
+            az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
+            az extension list-available --output table
