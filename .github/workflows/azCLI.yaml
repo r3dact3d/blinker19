@@ -24,5 +24,6 @@ jobs:
           inlineScript: |
             az login
             az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
+            az extension add --source https://aka.ms/az-aroext-latest.whl
             az config set extension.use_dynamic_install=yes_without_prompt
             az aro create cluster --help
