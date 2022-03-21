@@ -10,7 +10,7 @@ on:
 jobs:
   Setup:
     name: Setup Ubuntu runner
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
 #    - name: Azure login
 #        uses: azure/login@v1
@@ -23,8 +23,7 @@ jobs:
           azcliversion: latest
           inlineScript: |
             #az account set --subscription ${{ secrets.SUBSCRIPTION_ID }}
-            wget -O az-aroext-latest.whl "https://aka.ms/az-aroext-latest.whl"
-            az extension add --help
-            ls *
+            wget -O $GITHUB_WORKSPACE/az-aroext-latest.whl "https://aka.ms/az-aroext-latest.whl"
+            az extension add -s $GITHUB_WORKSPACE/az-aroext-latest.whl
             az extension list
             az aro create cluster --help
