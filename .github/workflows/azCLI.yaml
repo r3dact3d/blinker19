@@ -15,9 +15,10 @@ jobs:
     - name: Manual stuffs
       run: |
         az extension list
+        az config set extension.use_dynamic_install=yes_without_prompt
         az extension list-available --output table | grep -iE 'aro|ext|az-cli'
         #az extension add --source "https://aka.ms/az-aroext-latest.whl"
-        az aro create cluster --help
+        az aro create cluster --sdn-type --help
           
 #    - name: Azure login
 #        uses: azure/login@v1
