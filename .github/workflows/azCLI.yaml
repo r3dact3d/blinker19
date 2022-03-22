@@ -17,7 +17,7 @@ jobs:
         az extension list
         az config set extension.use_dynamic_install=yes_without_prompt
         az extension list-available --output table | grep -iE 'aro|ext|az-cli'
-        az extension upgrade --help
+        az extension update --help
         az aro create cluster --sdn-type --help
           
 #    - name: Azure login
